@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Kursova3.Models.Product>
+
+@Html.ActionLink("Go to Storage", "ShowStorage", "Home", new { @class = "btn btn-default" })
+@foreach (var item in Model)
+{
+    if (item.IsPrior)
+    {
+        <br />
+        <div class="row">
+            <div class="col-md-1" hidden>
+                @item.ProductID
+            </div>
+            <div class="col-md-5">
+                @item.Name
+            </div>
+            <div class="col-md-5">
+                @item.Price
+            </div>
+            <div class="col-md-2">
+                @Html.ActionLink("Add", "AddProduct", "Home", new { ProductID = item.ProductID }, new { @class = "btn btn-warning" })
+            </div>
+        </div>
+    }
+}
+@foreach (var item in Model)
+{
+    if (!item.IsPrior)
+    {
+        <br />
+        <div class="row">
+            <div class="col-md-1" hidden>
+                @item.ProductID
+            </div>
+            <div class="col-md-5">
+                @item.Name
+            </div>
+            <div class="col-md-5">
+                @item.Price
+            </div>
+            <div class="col-md-2">
+                @Html.ActionLink("Add", "AddProduct", "Home", new { ProductID = item.ProductID }, new { @class = "btn btn-warning" })
+            </div>
+        </div>
+    }
+}
+</div>

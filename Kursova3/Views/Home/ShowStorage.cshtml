@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Kursova3.Models.Product>
+@{
+    ViewBag.Title = "ShowStorage";
+}
+
+<h2>This is your storage</h2>
+@Html.ActionLink("Go to Home", "Index", "Home", new { @class = "btn btn-default" })
+@foreach (var item in Model)
+{
+    if (item.IsInStorage)
+    {
+        <br />
+        <div class="row">
+            <div class="col-md-1" hidden>
+                @item.ProductID
+            </div>
+            <div class="col-md-5">
+                @item.Name
+            </div>
+            <div class="col-md-5">
+                @item.Price
+            </div>
+            <div class="col-md-2">
+                @Html.ActionLink("Delete", "DeleteProduct", "Home", new { ProductID = item.ProductID }, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    }
+}
+
+<div class="col-md-2">
+    @Html.ActionLink("Buy Products", "Buy", "Home", new { @class = "btn btn-success" })
+</div>
